@@ -74,7 +74,7 @@
         <div id="quiz-section" class="section">
             <h2>Agora, responda ao Quiz em Inglês!</h2>
 
-            <div id="q1" class="question">
+            <div id="q1" class="question" data-correct="B">
                 <p>1. What does the "Rule of Law" primarily mean?</p>
                 <label><input type="radio" name="q1" value="A"> A) Laws are created and enforced arbitrarily by those in power.</label>
                 <label><input type="radio" name="q1" value="B"> B) Everyone, including government officials, is accountable under the law.</label>
@@ -82,7 +82,7 @@
                 <button type="button" class="next">Próxima</button>
             </div>
 
-            <div id="q2" class="question">
+            <div id="q2" class="question" data-correct="B">
                 <p>2. Which principle ensures that laws apply equally to all individuals, regardless of status?</p>
                 <label><input type="radio" name="q2" value="A"> A) Supremacy of the executive.</label>
                 <label><input type="radio" name="q2" value="B"> B) Equality before the law.</label>
@@ -90,7 +90,7 @@
                 <button type="button" class="next">Próxima</button>
             </div>
 
-            <div id="q3" class="question">
+            <div id="q3" class="question" data-correct="B">
                 <p>3. What is the "presumption of innocence" in legal proceedings?</p>
                 <label><input type="radio" name="q3" value="A"> A) The accused must prove their own guilt.</label>
                 <label><input type="radio" name="q3" value="B"> B) The accused is considered innocent until proven guilty.</label>
@@ -98,7 +98,7 @@
                 <button type="button" class="next">Próxima</button>
             </div>
 
-            <div id="q4" class="question">
+            <div id="q4" class="question" data-correct="B">
                 <p>4. Why is judicial independence a key aspect of the Rule of Law?</p>
                 <label><input type="radio" name="q4" value="A"> A) To allow judges to prioritize government interests.</label>
                 <label><input type="radio" name="q4" value="B"> B) To ensure fair, impartial, and unbiased decisions.</label>
@@ -106,7 +106,7 @@
                 <button type="button" class="next">Próxima</button>
             </div>
 
-            <div id="q5" class="question">
+            <div id="q5" class="question" data-correct="B">
                 <p>5. What does "access to justice" require under the Rule of Law?</p>
                 <label><input type="radio" name="q5" value="A"> A) Legal services available only to the wealthy.</label>
                 <label><input type="radio" name="q5" value="B"> B) Fair and effective resolution of disputes for everyone.</label>
@@ -114,7 +114,7 @@
                 <button type="button" class="next">Próxima</button>
             </div>
 
-            <div id="q6" class="question">
+            <div id="q6" class="question" data-correct="B">
                 <p>6. Which characteristic of the Rule of Law promotes transparent government actions?</p>
                 <label><input type="radio" name="q6" value="A"> A) Secretive law-making processes.</label>
                 <label><input type="radio" name="q6" value="B"> B) Open, accessible, and predictable legal systems.</label>
@@ -122,7 +122,7 @@
                 <button type="button" class="next">Próxima</button>
             </div>
 
-            <div id="q7" class="question">
+            <div id="q7" class="question" data-correct="B">
                 <p>7. In the Rule of Law, what does "accountability" mean for public officials?</p>
                 <label><input type="radio" name="q7" value="A"> A) They are exempt from legal consequences.</label>
                 <label><input type="radio" name="q7" value="B"> B) They must answer for their actions and can be held liable.</label>
@@ -143,6 +143,24 @@
         const feedbackDiv = document.getElementById('feedback');
         let currentQuestion = 0;
 
+        // Função para embaralhar opções de uma questão
+        function shuffleOptions(question) {
+            const options = Array.from(question.querySelectorAll('label'));
+            for (let i = options.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [options[i], options[j]] = [options[j], options[i]];
+            }
+            const p = question.querySelector('p');
+            const button = question.querySelector('button');
+            question.innerHTML = '';
+            question.appendChild(p);
+            options.forEach(opt => question.appendChild(opt));
+            question.appendChild(button);
+        }
+
+        // Embaralhar todas as questões no início
+        questions.forEach(q => shuffleOptions(q));
+
         // Função para mostrar próxima questão
         function showNextQuestion() {
             if (currentQuestion > 0) {
@@ -159,22 +177,31 @@
 
         // Calcular pontuação e enviar
         function calculateAndSubmit() {
-            const correctAnswers = ['B', 'B', 'B', 'B', 'B', 'B', 'B'];
             let score = 0;
-            for (let i = 1; i <= 7; i++) {
-                const selected = form.querySelector(`input[name="q${i}"]:checked`);
-                if (selected && selected.value === correctAnswers[i-1]) {
+            questions.forEach((q, index) => {
+                const selected = q.querySelector(`input[name="q${index+1}"]:checked`);
+                if (selected && selected.value === q.dataset.correct) {
                     score++;
                 }
+            });
+
+            // Feedback personalizado baseado na pontuação
+            let feedbackMessage = '';
+            if (score === 7) {
+                feedbackMessage = '<p>Parabéns! Você acertou todas as 7 questões. Seu domínio dos princípios do Rule of Law em inglês é impressionante. Continue assim e considere aprofundar com nossos cursos avançados de inglês jurídico na Fisk.</p>';
+            } else if (score >= 5) {
+                feedbackMessage = '<p>Ótimo desempenho! Você acertou ' + score + ' de 7 questões. Isso mostra uma sólida compreensão dos conceitos. Identifique as lacunas e melhore com nossos cursos personalizados para advogados na Fisk.</p>';
+            } else if (score >= 3) {
+                feedbackMessage = '<p>Bom esforço! Você acertou ' + score + ' de 7 questões. Há espaço para crescimento em seu inglês jurídico. Junte-se aos nossos cursos na Fisk para fortalecer esses conhecimentos essenciais.</p>';
+            } else {
+                feedbackMessage = '<p>Você acertou ' + score + ' de 7 questões. Não desanime – o Rule of Law é fundamental, e praticar inglês jurídico pode ajudar muito. Explore nossos cursos na Fisk para progredir rapidamente!</p>';
             }
 
             // Mostrar feedback
-            feedbackDiv.innerHTML = `
-                <p>Obrigado por participar do nosso Quiz sobre os Princípios Universais do Rule of Law! Você acertou ${score} de 7 questões.</p>
-                <p>Isso demonstra seu nível de familiaridade com conceitos jurídicos em inglês – uma habilidade essencial para advogados em um mundo globalizado. Se você deseja aprimorar seu inglês jurídico, o Centro de Ensino Fisk oferece cursos personalizados para profissionais do Direito. Entraremos em contato em breve com mais informações baseadas nas suas respostas.</p>
-                <p>Lembre-se: o Rule of Law é o alicerce da justiça em qualquer sociedade. Continue estudando e se atualizando!</p>
-                <p>Atenciosamente,<br>Equipe Fisk Cornélio Procópio e CAA-PR.</p>
-            `;
+            feedbackDiv.innerHTML = feedbackMessage + 
+                '<p>Isso demonstra seu nível de familiaridade com conceitos jurídicos em inglês – uma habilidade essencial para advogados em um mundo globalizado. Se você deseja aprimorar seu inglês jurídico, o Centro de Ensino Fisk oferece cursos personalizados para profissionais do Direito. Entraremos em contato em breve com mais informações baseadas nas suas respostas.</p>' +
+                '<p>Lembre-se: o Rule of Law é o alicerce da justiça em qualquer sociedade. Continue estudando e se atualizando!</p>' +
+                '<p>Atenciosamente,<br>Equipe Fisk Cornélio Procópio e CAA-PR.</p>';
             feedbackDiv.style.display = 'block';
             quizSection.style.display = 'none';
 
