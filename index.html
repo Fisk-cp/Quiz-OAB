@@ -5,21 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teste Suas Habilidades em Inglês Jurídico - How Well Do You Know the Universal Principles of the Rule of Law?</title>
     <style>
-        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #f0f8ff; } /* Light blue background inspired by Fisk/OAB blue */
-        h1 { text-align: center; color: #003552; } /* OAB primary blue */
-        h2 { color: #003552; } /* OAB primary blue for headings */
+        * { box-sizing: border-box; } /* Adiciona box-sizing para melhor controle de tamanhos */
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 10px; background-color: #f0f8ff; word-wrap: break-word; } /* Reduz padding e adiciona word-wrap */
+        h1 { text-align: center; color: #003552; }
+        h2 { color: #003552; }
         .section { margin-bottom: 20px; }
-        label { display: block; margin: 10px 0; color: #000; }
-        input[type="text"], select { width: 100%; padding: 8px; margin: 5px 0; border: 1px solid #003552; } /* Border with OAB blue */
-        button { padding: 10px 20px; background: #A51C30; color: white; border: none; cursor: pointer; } /* OAB red for buttons */
-        button:hover { background: #800020; } /* Darker red on hover */
+        label { display: block; margin: 10px 0; color: #000; word-wrap: break-word; overflow-wrap: break-word; } /* Garante que textos longos em labels quebrem linhas */
+        input[type="text"], select { width: 100%; padding: 8px; margin: 5px 0; border: 1px solid #003552; }
+        button { padding: 10px 20px; background: #A51C30; color: white; border: none; cursor: pointer; width: auto; } /* Botões não ocupam toda largura */
+        button:hover { background: #800020; }
         #feedback { display: none; margin-top: 20px; padding: 15px; background: #f0f0f0; border: 1px solid #ccc; }
-        .question { display: none; } /* Hide questions initially */
-        #leads-section { display: block; } /* Show leads first */
-        #quiz-section { display: none; } /* Hide quiz initially */
-        .main-title { color: #A51C30; font-size: 1.1em; display: block; } /* Vermelho e um pouco menor */
-        .subtitle { font-size: 0.8em; display: block; } /* Menor para o subtítulo */
-        .red { color: #A51C30; } /* Vermelho para nomes destacados */
+        .question { display: none; }
+        #leads-section { display: block; }
+        #quiz-section { display: none; }
+        .main-title { color: #A51C30; font-size: 1.1em; display: block; }
+        .subtitle { font-size: 0.8em; display: block; }
+        .red { color: #A51C30; }
+        @media (max-width: 600px) { /* Ajustes específicos para mobile */
+            body { padding: 10px; }
+            label { font-size: 14px; } /* Reduz fonte se necessário */
+            button { width: 100%; } /* Botões full-width em mobile para melhor toque */
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>
