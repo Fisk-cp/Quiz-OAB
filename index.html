@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Well Do You Know the Universal Principles of the Rule of Law? Test Your Legal English Skills</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #f0f8ff; } /* Light blue background inspired by Fisk/OAB blue */
+        h1 { text-align: center; color: #003552; } /* OAB primary blue */
+        h2 { color: #003552; } /* OAB primary blue for headings */
+        .section { margin-bottom: 20px; }
+        label { display: block; margin: 10px 0; color: #000; }
+        input[type="text"], select { width: 100%; padding: 8px; margin: 5px 0; border: 1px solid #003552; } /* Border with OAB blue */
+        button { padding: 10px 20px; background: #A51C30; color: white; border: none; cursor: pointer; } /* OAB red for buttons */
+        button:hover { background: #800020; } /* Darker red on hover */
+        #feedback { display: none; margin-top: 20px; padding: 15px; background: #f0f0f0; border: 1px solid #ccc; }
+        .question { display: none; } /* Hide questions initially */
+        #leads-section { display: block; } /* Show leads first */
+        #quiz-section { display: none; } /* Hide quiz initially */
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("TEEVLvd2vl-pnycUF"); // Public Key inserida
+        })();
+    </script>
+</head>
+<body>
+
+    <h1>How Well Do You Know the Universal Principles of the Rule of Law? Test Your Legal English Skills</h1>
+
+    <div class="section">
+        <p>Quiz Interativo sobre os Princípios Universais do Estado de Direito!</p>
+        <p>Este quiz é uma iniciativa conjunta do Centro de Ensino Fisk - Unidade Cornélio Procópio, localizado no Estado do Paraná, na Av. Minas Gerais, 467 – Centro, telefone (43) 99681-4040, e da Caixa de Assistência dos Advogados do Paraná (CAA-PR), com sede em Curitiba, Estado do Paraná, na Rua Brasilino Moura, 253 – 2º andar, neste ato representada por seu Delegado junto à Subseção de Cornélio Procópio, Luiz Paulo Busquim Braga.</p>
+        <p>O objetivo é testar seus conhecimentos em conceitos jurídicos fundamentais em inglês, essenciais para a prática advocatícia internacional. Responda às 7 questões de múltipla escolha e, ao final, receba um feedback personalizado. Seus dados serão tratados com confidencialidade e usados apenas para contato sobre oportunidades educacionais. Vamos começar coletando algumas informações básicas (obrigatórias para prosseguir).</p>
+    </div>
+
+    <form id="quizForm">
+        <!-- Seção de Captura de Leads (Obrigatória no Início) -->
+        <div id="leads-section" class="section">
+            <h2>Informações para Contato</h2>
+            <label for="nome">Nome Completo:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="idade">Idade:</label>
+            <input type="text" id="idade" name="idade" required>
+
+            <label for="telefone">Telefone:</label>
+            <input type="text" id="telefone" name="telefone" required>
+
+            <label for="endereco">Endereço:</label>
+            <input type="text" id="endereco" name="endereco" required>
+
+            <label for="fez_ingles">Você já fez curso de inglês?</label>
+            <select id="fez_ingles" name="fez_ingles" required>
+                <option value="">Selecione</option>
+                <option value="Sim">Sim</option>
+                <option value="Não">Não</option>
+            </select>
+
+            <label for="onde_fez">Se sim, onde fez o curso de inglês?</label>
+            <input type="text" id="onde_fez" name="onde_fez">
+
+            <label for="tempo_fez">Se sim, por quanto tempo fez o curso de inglês?</label>
+            <input type="text" id="tempo_fez" name="tempo_fez">
+
+            <button type="button" id="prosseguir">Prosseguir</button>
+        </div>
+
+        <!-- Seção do Quiz (uma por vez) -->
+        <div id="quiz-section" class="section">
+            <h2>Agora, responda ao Quiz em Inglês!</h2>
+
+            <div id="q1" class="question">
+                <p>1. What does the "Rule of Law" primarily mean?</p>
+                <label><input type="radio" name="q1" value="A"> A) Laws are created and enforced arbitrarily by those in power.</label>
+                <label><input type="radio" name="q1" value="B"> B) Everyone, including government officials, is accountable under the law.</label>
+                <label><input type="radio" name="q1" value="C"> C) Only citizens are required to follow legal standards.</label>
+                <button type="button" class="next">Próxima</button>
+            </div>
+
+            <div id="q2" class="question">
+                <p>2. Which principle ensures that laws apply equally to all individuals, regardless of status?</p>
+                <label><input type="radio" name="q2" value="A"> A) Supremacy of the executive.</label>
+                <label><input type="radio" name="q2" value="B"> B) Equality before the law.</label>
+                <label><input type="radio" name="q2" value="C"> C) Selective enforcement.</label>
+                <button type="button" class="next">Próxima</button>
+            </div>
+
+            <div id="q3" class="question">
+                <p>3. What is the "presumption of innocence" in legal proceedings?</p>
+                <label><input type="radio" name="q3" value="A"> A) The accused must prove their own guilt.</label>
+                <label><input type="radio" name="q3" value="B"> B) The accused is considered innocent until proven guilty.</label>
+                <label><input type="radio" name="q3" value="C"> C) Guilt is assumed for serious crimes.</label>
+                <button type="button" class="next">Próxima</button>
+            </div>
+
+            <div id="q4" class="question">
+                <p>4. Why is judicial independence a key aspect of the Rule of Law?</p>
+                <label><input type="radio" name="q4" value="A"> A) To allow judges to prioritize government interests.</label>
+                <label><input type="radio" name="q4" value="B"> B) To ensure fair, impartial, and unbiased decisions.</label>
+                <label><input type="radio" name="q4" value="C"> C) To limit public access to court records.</label>
+                <button type="button" class="next">Próxima</button>
+            </div>
+
+            <div id="q5" class="question">
+                <p>5. What does "access to justice" require under the Rule of Law?</p>
+                <label><input type="radio" name="q5" value="A"> A) Legal services available only to the wealthy.</label>
+                <label><input type="radio" name="q5" value="B"> B) Fair and effective resolution of disputes for everyone.</label>
+                <label><input type="radio" name="q5" value="C"> C) Exclusion of certain groups from legal protections.</label>
+                <button type="button" class="next">Próxima</button>
+            </div>
+
+            <div id="q6" class="question">
+                <p>6. Which characteristic of the Rule of Law promotes transparent government actions?</p>
+                <label><input type="radio" name="q6" value="A"> A) Secretive law-making processes.</label>
+                <label><input type="radio" name="q6" value="B"> B) Open, accessible, and predictable legal systems.</label>
+                <label><input type="radio" name="q6" value="C"> C) Arbitrary changes to laws without notice.</label>
+                <button type="button" class="next">Próxima</button>
+            </div>
+
+            <div id="q7" class="question">
+                <p>7. In the Rule of Law, what does "accountability" mean for public officials?</p>
+                <label><input type="radio" name="q7" value="A"> A) They are exempt from legal consequences.</label>
+                <label><input type="radio" name="q7" value="B"> B) They must answer for their actions and can be held liable.</label>
+                <label><input type="radio" name="q7" value="C"> C) Only private individuals face scrutiny.</label>
+                <button type="button" class="next">Enviar Respostas</button>
+            </div>
+        </div>
+    </form>
+
+    <div id="feedback"></div>
+
+    <script>
+        const form = document.getElementById('quizForm');
+        const leadsSection = document.getElementById('leads-section');
+        const quizSection = document.getElementById('quiz-section');
+        const prosseguirBtn = document.getElementById('prosseguir');
+        const questions = document.querySelectorAll('.question');
+        const feedbackDiv = document.getElementById('feedback');
+        let currentQuestion = 0;
+
+        // Função para mostrar próxima questão
+        function showNextQuestion() {
+            if (currentQuestion > 0) {
+                questions[currentQuestion - 1].style.display = 'none';
+            }
+            if (currentQuestion < questions.length) {
+                questions[currentQuestion].style.display = 'block';
+                currentQuestion++;
+            } else {
+                // Fim do quiz: calcular pontuação e enviar
+                calculateAndSubmit();
+            }
+        }
+
+        // Calcular pontuação e enviar
+        function calculateAndSubmit() {
+            const correctAnswers = ['B', 'B', 'B', 'B', 'B', 'B', 'B'];
+            let score = 0;
+            for (let i = 1; i <= 7; i++) {
+                const selected = form.querySelector(`input[name="q${i}"]:checked`);
+                if (selected && selected.value === correctAnswers[i-1]) {
+                    score++;
+                }
+            }
+
+            // Mostrar feedback
+            feedbackDiv.innerHTML = `
+                <p>Obrigado por participar do nosso Quiz sobre os Princípios Universais do Rule of Law! Você acertou ${score} de 7 questões.</p>
+                <p>Isso demonstra seu nível de familiaridade com conceitos jurídicos em inglês – uma habilidade essencial para advogados em um mundo globalizado. Se você deseja aprimorar seu inglês jurídico, o Centro de Ensino Fisk oferece cursos personalizados para profissionais do Direito. Entraremos em contato em breve com mais informações baseadas nas suas respostas.</p>
+                <p>Lembre-se: o Rule of Law é o alicerce da justiça em qualquer sociedade. Continue estudando e se atualizando!</p>
+                <p>Atenciosamente,<br>Equipe Fisk Cornélio Procópio e CAA-PR.</p>
+            `;
+            feedbackDiv.style.display = 'block';
+            quizSection.style.display = 'none';
+
+            // Coletar dados
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => { data[key] = value; });
+            data.score = score;
+
+            // Enviar via EmailJS
+            emailjs.send("service_1n0xr6m", "YOUR_TEMPLATE_ID", data)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    alert('Seus dados foram enviados com sucesso!');
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    alert('Houve um erro ao enviar os dados. Tente novamente.');
+                });
+        }
+
+        // Evento para prosseguir após leads
+        prosseguirBtn.addEventListener('click', function() {
+            if (form.checkValidity()) {
+                leadsSection.style.display = 'none';
+                quizSection.style.display = 'block';
+                showNextQuestion(); // Mostrar primeira questão
+            } else {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+            }
+        });
+
+        // Eventos para botões "Próxima"
+        document.querySelectorAll('.next').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const currentQ = this.parentElement;
+                const selected = currentQ.querySelector('input[type="radio"]:checked');
+                if (selected) {
+                    showNextQuestion();
+                } else {
+                    alert('Por favor, selecione uma opção.');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
